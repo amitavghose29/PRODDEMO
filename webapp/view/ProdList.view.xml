@@ -1,0 +1,13 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m" controllerName="com.prod.demo.proddemo.controller.ProdList" displayBlock="true">
+    <Page id="page" title="{i18n>title}">
+        <content>
+           <ComboBox id="idProduct">
+             <core:Item id="_IDItem1" key="3" text="Product1"/>
+             <core:Item id="_IDItem2" key="4" text="Product2"/>
+             <core:Item id="_IDItem3" key="5" text="Product3"/>
+           </ComboBox>
+           <Button xmlns="sap.m" text="Submit" id="button0" press="startWFInstance"/>
+           
+        </content>
+    </Page>
+</mvc:View>
