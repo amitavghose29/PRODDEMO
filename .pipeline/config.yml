@@ -33,7 +33,7 @@ stages:
     uiVeri5ExecuteTests: false
 
   Release:
-    cloudFoundryDeploy:  false
+    cloudFoundryDeploy:  true
     cfApiEndpoint: "https://api.cf.eu10.hana.ondemand.com"  
     cfOrg: "a4e34cb0trial"
     cfSpace: "dev"
