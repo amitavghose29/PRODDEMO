@@ -1,0 +1,83 @@
+###
+# This file configures the project "Piper" pipeline of your project.
+# For a reference of the configuration concept and available options, please have a look into its documentation.
+#
+# The documentation for the most recent pipeline version can always be found at:
+#    https://sap.github.io/jenkins-library/
+#
+# This is a YAML-file. YAML is an indentation-sensitive file format. Please make sure to properly indent changes to it.
+###
+
+
+
+### General project setup
+general:
+  buildTool: "mta"
+
+stages:
+  Build:
+    mavenExecuteStaticCodeChecks: false
+    npmExecuteLint: true
+
+  Additional Unit Tests:
+    npmExecuteScripts: false
+    karmaExecuteTests: false
+
+  Acceptance:
+    cloudFoundryDeploy:  false
+    cfApiEndpoint: "https://api.cf.eu10.hana.ondemand.com"  
+    cfOrg: "a4e34cb0trial"
+    cfSpace: "dev"
+    cfAppName: "PRODDEMO"
+    cfCredentialsId: "deploy-to-cf"
+    uiVeri5ExecuteTests: false
+
+  Release:
+    cloudFoundryDeploy:  false
+    cfApiEndpoint: "https://api.cf.eu10.hana.ondemand.com"  
+    cfOrg: "a4e34cb0trial"
+    cfSpace: "dev"
+    cfAppName: "PRODDEMO"
+    cfCredentialsId: "deploy-to-cf"
+    tmsUpload: false
+
+  steps:
+    artifactPrepareVersion:
+       versioningType:  "cloud_noTag" 
+
+    npmExecuteLint:
+      failOnError: true
+
+    cloudFoundryDeploy:
+      mtaDeployParameters: "-f --version-rule ALL"       
+    tmsUpload:
+      nodeName: "qa" 
+      credentialsId:  "tms-sk"
+      
+
+
+
+
+### Step-specific configuration
+steps:
+  mavenExecute:
+    dockerImage: devxci/mbtci:1.0.14
+
+  artifactPrepareVersion:
+    versioningType: cloud_noTag
+
+
+
+#  Integration:
+#    credentials:
+#      - alias: 'mySystemAlias'
+#        credentialId: 'mySystemCredentialsId'
+
+#  Release:
+#    cfTargets:
+#      - org: 'myOrg'
+#        space: 'mySpace'
+#        apiEndpoint: 'https://'
+#        appName: 'myAppName'
+#        manifest: 'manifest.yml'
+#        credentialsId: 'myDeploymentCredentialsId'
