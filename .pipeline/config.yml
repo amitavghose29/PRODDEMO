@@ -50,6 +50,12 @@ stages:
 
     cloudFoundryDeploy:
       mtaDeployParameters: "-f --version-rule ALL"       
+      deployTool: 'mtaDeployPlugin'
+      deployType: 'standard'
+      cloudFoundry:
+       org: "a4e34cb0trial"
+       space: "dev"
+       credentialsId: "deploy-to-cf"
     tmsUpload:
       nodeName: "qa" 
       credentialsId:  "tms-sk"
@@ -60,9 +66,7 @@ stages:
 
 ### Step-specific configuration
 steps:
-  mavenExecute:
-    dockerImage: devxci/mbtci:1.0.14
-
+  
   artifactPrepareVersion:
     versioningType: cloud_noTag
 
