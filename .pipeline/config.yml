@@ -29,8 +29,9 @@ stages:
     cfOrg: "a4e34cb0trial"
     cfSpace: "dev"
     cfAppName: "PRODDEMO"
-    cfCredentialsId: "deploy-to-cf"
+    cfCredentialId: "deploy-to-cf"
     uiVeri5ExecuteTests: false
+    
 
   Release:
     cloudFoundryDeploy:  true
@@ -38,9 +39,9 @@ stages:
     cfOrg: "a4e34cb0trial"
     cfSpace: "dev"
     cfAppName: "PRODDEMO"
-    cfCredentialsId: "deploy-to-cf"
+    cfCredentialId: "deploy-to-cf"
     tmsUpload: false
-
+    
   steps:
     artifactPrepareVersion:
        versioningType:  "cloud_noTag" 
@@ -55,7 +56,7 @@ stages:
       cloudFoundry:
        org: "a4e34cb0trial"
        space: "dev"
-       credentialsId: "deploy-to-cf"
+       credentialId: "deploy-to-cf"
     tmsUpload:
       nodeName: "qa" 
       credentialsId:  "tms-sk"
