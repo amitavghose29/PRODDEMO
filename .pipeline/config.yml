@@ -35,12 +35,20 @@ stages:
 
   Release:
     cloudFoundryDeploy:  true
-    cfApiEndpoint: "https://api.cf.eu10.hana.ondemand.com"  
-    cfOrg: "a4e34cb0trial"
-    cfSpace: "dev"
-    cfAppName: "PRODDEMO"
-    cfCredentialId: "deploy-to-cf"
-    tmsUpload: false
+   # cfApiEndpoint: "https://api.cf.eu10.hana.ondemand.com"  
+   # cfOrg: "a4e34cb0trial"
+    #cfSpace: "dev"
+    #cfAppName: "PRODDEMO"
+    #cfCredentialId: "deploy-to-cf"
+    #tmsUpload: false
+    cloudFoundry:
+       org: "a4e34cb0trial"
+       space: "dev"
+       apiEndpoint: 'https://api.cf.eu10.hana.ondemand.com'
+       appName: 'PRODDEMO'
+       manifest: 'manifest.yml'
+       credentialsId: 'deploy-to-cf'
+
     
   steps:
     artifactPrepareVersion:
@@ -56,6 +64,9 @@ stages:
       cloudFoundry:
        org: "a4e34cb0trial"
        space: "dev"
+       apiEndpoint: 'https://'
+       appName: 'myAppName'
+       manifest: 'manifest.yml'
        credentialId: "deploy-to-cf"
     tmsUpload:
       nodeName: "qa" 
